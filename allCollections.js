@@ -37,7 +37,9 @@ const allCollections = [
     "0x31385d3520bced94f77aae104b406994d8f2168c", // bgans V2 ================================================> DONE
     "0x9126b817ccca682beaa9f4eae734948ee1166af1", // bgans V1 =================================================> DONE
     "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270", // artblocks
-    "0xd57e2c07f5eebd70eeef07133b322016c2362ff5" // Le Wassie Imposteur
+    "0xd57e2c07f5eebd70eeef07133b322016c2362ff5", // Le Wassie Imposteur
+    "0x11de4a45d9dffe96b30cba3dde25f97f6db26c0b", // yellow flappy
+    "0xdcd8dbb5624e2a44f9b3882f56b62d2d1920f660", // some random sepolia collection
 ]
 
 export {allCollections}
