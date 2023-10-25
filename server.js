@@ -12,22 +12,13 @@ const OS_API_KEY = process.env.OS_API_KEY
 const WEBSOCKET_API_KEY = process.env.WEBSOCKET_API_KEY
 
 // USE FOR MAINNET
-const wss = new WebSocket(`wss://ws.reservoir.tools?api_key=${WEBSOCKET_API_KEY}`);
-const os_options = {method: 'GET', headers: {accept: 'application/json', 'X-API-KEY': OS_API_KEY}};
-
-// USE FOR TESTNET
-// const wss = new WebSocket(`wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`);
-// const os_options = {method: 'GET', headers: {accept: 'application/json'}}; // no api key for testnet os
-
-// USE FOR MAINNET
-const graphqlEndpoint = "https://www.fountaindigital.xyz/graphql"
+const graphqlEndpoint = "https://fountaindigital.xyz/graphql"
 const osBaseURL = 'https://api.opensea.io/api/v1/'
 // testing for workflow trigger
 
 // USE FOR TESTNET
 // const graphqlEndpoint = "http://localhost:3000/graphql"
 // const osBaseURL = 'https://testnets-api.opensea.io/api/v1/'
-
 
 async function sendGraphQL(_query, _variables) {
     let body
@@ -54,9 +45,17 @@ async function sendGraphQL(_query, _variables) {
 };
 
 await fetchAndUpdateAddresses()
+
+// USE FOR MAINNET
+const wss = new WebSocket(`wss://ws.reservoir.tools?api_key=${WEBSOCKET_API_KEY}`);
+const os_options = {method: 'GET', headers: {accept: 'application/json', 'X-API-KEY': OS_API_KEY}};
+
+// USE FOR TESTNET
+// const wss = new WebSocket(`wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`);
+// const os_options = {method: 'GET', headers: {accept: 'application/json'}}; // no api key for testnet os
+
 // Schedule updates every 5 minutes (adjust the interval as needed).
 setInterval(schedulePeriodicUpdates, 5 * 60 * 1000);
-
 wss.on('open', function open() {
     console.log('Connected to Reservoir');
 
