@@ -22,6 +22,7 @@ const os_options = {method: 'GET', headers: {accept: 'application/json', 'X-API-
 // USE FOR MAINNET
 const graphqlEndpoint = "https://www.fountaindigital.xyz/graphql"
 const osBaseURL = 'https://api.opensea.io/api/v1/'
+// testing for workflow trigger
 
 // USE FOR TESTNET
 // const graphqlEndpoint = "http://localhost:3000/graphql"
