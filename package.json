@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"i dont need no stinking tests\""
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
