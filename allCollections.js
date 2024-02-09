@@ -12,10 +12,9 @@ const allCollections = [
     '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb', // CryptoPunks =============================================> DONE
     '0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313', // Curio Cards
     '0xd754937672300ae6708a51229112de4017810934', // Deafbeef: Series 0-5 
-    '0xdfde78d2baec499fe18f2be74b6c287eed9511d7', // BrainDrops - Genesis By Claire Silver
+    '0xdfde78d2baec499fe18f2be74b6c287eed9511d7', // BrainDrops
     '0xc143bbfcdbdbed6d454803804752a064a622c1f3', // Grifters
     '0xe012baf811cf9c05c408e879c399960d1f305903', // Kodas
-    '0xdfde78d2baec499fe18f2be74b6c287eed9511d7', // BrainDrops - Life in West America
     '0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7', // Meebits
     '0x60e4d786628fea6478f785a6d7e704777c86a7c6', // Mutant Apes
     '0x9c8ff314c9bc7f6e59a9d9225fb22946427edc03', // Nouns
@@ -37,11 +36,13 @@ const allCollections = [
     "0x31385d3520bced94f77aae104b406994d8f2168c", // bgans V2 ================================================> DONE
     "0x9126b817ccca682beaa9f4eae734948ee1166af1", // bgans V1 =================================================> DONE
     "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270", // artblocks
-    // "0x11de4a45d9dffe96b30cba3dde25f97f6db26c0b", // yellow flappy
-    // "0xdcd8dbb5624e2a44f9b3882f56b62d2d1920f660", // some random sepolia collection
+    "0x11de4a45d9dffe96b30cba3dde25f97f6db26c0b", // yellow flappy
+    "0xdcd8dbb5624e2a44f9b3882f56b62d2d1920f660", // some random sepolia collection
     "0xc3f733ca98e0dad0386979eb96fb1722a1a05e69", // mooncats
     "0x5ab44d97b0504ed90b8c5b8a325aa61376703c88", // e30d
     "0x72a94e6c51cb06453b84c049ce1e1312f7c05e2c", // wiiides
+    "0xb7f7f6c52f2e2fdb1963eab30438024864c313f6", // wrapped cryptopunks =====================================> DONE (no traits)
+    "0x000000000000003607fce1ac9e043a86675c5c2f", // cryptopunks721 (new wrapped contaract) ==================> DONE
 ]
 
 export {allCollections}

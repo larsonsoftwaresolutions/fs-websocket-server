@@ -50,4 +50,23 @@ const addNFTMutation = `
     }
 `
 
-export {getAllContactsQuery, deleteNFTByTokenAndContractMutation, getNftsByContactQuery, updateNFTMutation, addNFTMutation}
+const addTransferMutation = `
+    mutation AddTransfer($input: TransferInput!) {
+        addTransfer(input: $input) {
+            action
+            to {
+                address
+                contactName
+            }
+            from {
+                address
+                contactName
+            }
+            contractAddress
+            tokenId
+            date
+        }
+    }
+`
+
+export {getAllContactsQuery, deleteNFTByTokenAndContractMutation, getNftsByContactQuery, updateNFTMutation, addNFTMutation, addTransferMutation}
