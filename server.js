@@ -11,6 +11,7 @@ import {
 } from "./graphql.js";
 import "dotenv/config";
 import { AUTOGLYPH_SERIES } from "./autoglyphSeries.js";
+import bodyParser from "body-parser";
 
 let allAddresses = [];
 let allContacts = [];
@@ -20,6 +21,7 @@ let reservoirConnected = false;
 let transfersCreated = 0;
 
 const JWT = process.env.JWT;
+const jsonParser = bodyParser.json();
 
 // USE FOR MAINNET
 const graphqlEndpoint = "https://fountaindigital.xyz/graphql";
@@ -81,10 +83,10 @@ wss.on("open", function open() {
 
   wss.on("message", async function incoming(_data) {
     let transferData = JSON.parse(_data).data;
-    console.log("HELLO: " + JSON.stringify(transferData));
+    // console.log("HELLO: " + JSON.stringify(transferData));
     if (transferData.event === "transfer.created") {
       transfersCreated++;
-      console.log("transfers created: " + transfersCreated);
+      // console.log("transfers created: " + transfersCreated);
     }
     let fromContact;
     let toContact;
@@ -842,6 +844,16 @@ function unsubscribeFromAll() {
     })
   );
 }
+
+app.post('/updateContacts', jsonParser, (req,res) => {
+  const payload = req.body;
+  console.log("PAYLOAD: " + JSON.stringify(payload))
+
+  // if (payload && payload.action === "UPDATE_CONTACTS") {
+    fetchAndUpdateAddresses();
+  // }
+  res.status(200).send({message: 'Received!'})
+})
 
 // Start the server
 app.listen(port, () => {
