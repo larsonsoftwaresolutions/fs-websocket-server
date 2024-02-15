@@ -19,6 +19,7 @@ let recentTransfers = {};
 let addressCount = 0;
 let reservoirConnected = false;
 let transfersCreated = 0;
+let initialSubscribeToAll = true;
 
 const JWT = process.env.JWT;
 const jsonParser = bodyParser.json();
@@ -84,10 +85,9 @@ wss.on("open", function open() {
 
   wss.on("message", async function incoming(_data) {
     let transferData = JSON.parse(_data).data;
-    // console.log("HELLO: " + JSON.stringify(transferData));
+    console.log("HELLO: " + JSON.stringify(JSON.parse(_data)));
     if (transferData.event === "transfer.created") {
       transfersCreated++;
-      // console.log("transfers created: " + transfersCreated);
     }
     let fromContact;
     let toContact;
@@ -799,9 +799,6 @@ async function fetchAndUpdateAddresses() {
   allAddresses = [];
   try {
     const res = await sendGraphQL(getAllContactsQuery);
-    // console.log(
-    //   "All Contacts: " + JSON.stringify(res.data.getAllContacts.length)
-    // );
     allContacts = res.data.getAllContacts.filter((contact) => {
       return contact.addresses.includes("0xba31f113975e47108276a8628b7d7df97eb72fea")
     });
@@ -820,7 +817,13 @@ async function fetchAndUpdateAddresses() {
 
     if (allAddresses.length !== addressCount) {
       addressCount = allAddresses.length;
-      unsubscribeFromAll();
+      if (initialSubscribeToAll) {
+        console.log("init subscribe to all: YES");
+        initialSubscribeToAll = false;
+      } else {
+        console.log("init subscribe to all: NO");
+        unsubscribeFromAll();
+      }
       subscribeToAll();
     }
   } catch (error) {
