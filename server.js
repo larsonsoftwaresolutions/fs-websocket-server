@@ -29,6 +29,7 @@ const alchemyBaseURL = `https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.A
 
 // USE FOR TESTNET
 // const graphqlEndpoint = "http://localhost:3000/graphql";
+// const alchemyBaseURL = `https://eth-sepolia.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
 
 const alchemy_options = {
   method: "GET",
@@ -67,13 +68,13 @@ async function sendGraphQL(_query, _variables) {
 }
 
 // USE FOR MAINNET
-// const wss = new WebSocket(`wss://ws.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`);
+const wss = new WebSocket(`wss://ws.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`);
 
 // USE FOR TESTNET
 // console.log("WEBSOCKET API EKY: " + process.env.WEBSOCKET_API_KEY)
-const wss = new WebSocket(
-  `wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
-);
+// const wss = new WebSocket(
+//   `wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
+// );
 
 // Schedule updates every 5 minutes (adjust the interval as needed).
 // setInterval(schedulePeriodicUpdates, 5 * 60 * 1000);
@@ -798,10 +799,16 @@ async function fetchAndUpdateAddresses() {
   allAddresses = [];
   try {
     const res = await sendGraphQL(getAllContactsQuery);
+    // console.log(
+    //   "All Contacts: " + JSON.stringify(res.data.getAllContacts.length)
+    // );
+    allContacts = res.data.getAllContacts.filter((contact) => {
+      return contact.addresses.includes("0xba31f113975e47108276a8628b7d7df97eb72fea")
+    });
+
     console.log(
-      "All Contacts: " + JSON.stringify(res.data.getAllContacts.length)
+      "All Contacts: " + JSON.stringify(allContacts)
     );
-    allContacts = res.data.getAllContacts;
 
     for (var x = 0; x < allContacts.length; x++) {
       let currentContact = allContacts[x];
@@ -849,9 +856,7 @@ app.post('/updateContacts', jsonParser, (req,res) => {
   const payload = req.body;
   console.log("PAYLOAD: " + JSON.stringify(payload))
 
-  // if (payload && payload.action === "UPDATE_CONTACTS") {
-    fetchAndUpdateAddresses();
-  // }
+  fetchAndUpdateAddresses();
   res.status(200).send({message: 'Received!'})
 })
 
