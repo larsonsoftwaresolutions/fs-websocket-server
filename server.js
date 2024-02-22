@@ -41,11 +41,13 @@ const alchemy_options = {
 const app = express();
 const port = process.env.PORT || 3005;
 // to get channel_id go to: https://api.telegram.org/botXXX:YYYY/getUpdates
-const telegramBot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, {
-  polling: true,
-});
+const telegramBot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN);
 
 app.get("/test", (req, res) => {
+  telegramBot.sendMessage(
+    process.env.TELEGRAM_CHAT_ID,
+    "telegram bot is running"
+  );
   res.status(200).send("Nice: " + reservoirConnected + " " + transfersCreated);
 });
 
