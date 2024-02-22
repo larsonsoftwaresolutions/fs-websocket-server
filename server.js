@@ -112,12 +112,14 @@ wss.on("open", function open() {
               contact: contact,
               address: address,
             };
-          } else if (address === to) {
+          } if (address === to) {
             toContact = {
               contact: contact,
               address: address,
             };
           }
+          console.log("FROM CONTACT: " + JSON.stringify(fromContact))
+          console.log("TO CONTACT: " + JSON.stringify(toContact))
         }
       }
       if (fromContact) {
