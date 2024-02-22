@@ -382,21 +382,13 @@ wss.on("open", function open() {
                         : nft.contract?.name === "Autoglyphs"
                         ? nft.contract.name.split("s", 1) + " #" + nft.tokenId
                         : nft.name,
-                    // image: nft.image.cachedUrl,
-                    image:
-                      nft.contract.symbol === "XLP"
-                        ? "https://i.seadn.io/s/raw/files/0fb7d3a228c6563fb1e6970d04f697e5.png?auto=format&dpr=1&w=1000"
-                        : nft.contract.symbol === "TLBB"
-                        ? "https://i.seadn.io/s/raw/files/7adfc046887cf65714723c519f23b75f.jpg?auto=format&dpr=1&w=1000"
-                        : "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg",
+                    image: nft.image.cachedUrl,
                     tokenId: Number(nft.tokenId),
                     ercType: nft.tokenType,
                     ownerAddress: toContact.address,
                     contractAddress: nft.contract.address.toLowerCase(),
-                    // slug: nft.collection.slug,
-                    slug: "test-collection",
-                    // collectionName: nft.collection.name,
-                    collectionName: "Test Collection",
+                    slug: nft.collection.slug,
+                    collectionName: nft.collection.name,
                     contact: toContact.contact._id,
                     contactName: toContact.contact.name,
                     quantity: Number(transferData.amount),
@@ -590,21 +582,13 @@ wss.on("open", function open() {
                         : nft.contract?.name === "Autoglyphs"
                         ? nft.contract.name.split("s", 1) + " #" + nft.tokenId
                         : nft.name,
-                    // image: nft.image.cachedUrl,
-                    image:
-                      nft.contract.symbol === "XLP"
-                        ? "https://i.seadn.io/s/raw/files/0fb7d3a228c6563fb1e6970d04f697e5.png?auto=format&dpr=1&w=1000"
-                        : nft.contract.symbol === "TLBB"
-                        ? "https://i.seadn.io/s/raw/files/7adfc046887cf65714723c519f23b75f.jpg?auto=format&dpr=1&w=1000"
-                        : "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg",
+                    image: nft.image.cachedUrl,
                     tokenId: Number(nft.tokenId),
                     ercType: nft.tokenType,
                     ownerAddress: toContact.address,
                     contractAddress: nft.contract.address.toLowerCase(),
-                    // slug: nft.collection.slug,
-                    slug: "test-collection",
-                    // collectionName: nft.collection.name,
-                    collectionName: "Test Collection",
+                    slug: nft.collection.slug,
+                    collectionName: nft.collection.name,
                     contact: toContact.contact._id,
                     contactName: toContact.contact.name,
                     quantity: Number(transferData.amount),
@@ -741,21 +725,13 @@ wss.on("open", function open() {
                     : nft.contract?.name === "Autoglyphs"
                     ? nft.contract.name.split("s", 1) + " #" + nft.tokenId
                     : nft.name,
-                // image: nft.image.cachedUrl,
-                image:
-                  nft.contract.symbol === "XLP"
-                    ? "https://i.seadn.io/s/raw/files/0fb7d3a228c6563fb1e6970d04f697e5.png?auto=format&dpr=1&w=1000"
-                    : nft.contract.symbol === "TLBB"
-                    ? "https://i.seadn.io/s/raw/files/7adfc046887cf65714723c519f23b75f.jpg?auto=format&dpr=1&w=1000"
-                    : "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg",
+                image: nft.image.cachedUrl,
                 tokenId: Number(nft.tokenId),
                 ercType: nft.tokenType,
                 ownerAddress: toContact.address,
                 contractAddress: nft.contract.address.toLowerCase(),
-                // slug: nft.collection.slug,
-                slug: "test-collection",
-                // collectionName: nft.collection.name,
-                collectionName: "Test Collection",
+                slug: nft.collection.slug,
+                collectionName: nft.collection.name,
                 contact: toContact.contact._id,
                 contactName: toContact.contact.name,
                 quantity: Number(transferData.amount),
