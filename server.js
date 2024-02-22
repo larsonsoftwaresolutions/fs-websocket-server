@@ -88,8 +88,7 @@ wss.on("open", function open() {
   wss.on("message", async function incoming(_data) {
     let transferData = JSON.parse(_data).data;
     console.log("HELLO: " + JSON.stringify(JSON.parse(_data)));
-    // if (transferData.event === "transfer.created") {
-    if (JSON.parse(_data).event === "transfer.created") {
+    if (transferData.event === "transfer.created") {
       transfersCreated++;
     }
     let fromContact;
