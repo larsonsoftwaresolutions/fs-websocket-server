@@ -26,11 +26,11 @@ const jsonParser = bodyParser.json();
 
 // USE FOR MAINNET
 const graphqlEndpoint = "https://fountaindigital.xyz/graphql";
-const alchemyBaseURL = `https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
+// const alchemyBaseURL = `https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
 
 // USE FOR TESTNET
 // const graphqlEndpoint = "http://localhost:3000/graphql";
-// const alchemyBaseURL = `https://eth-sepolia.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
+const alchemyBaseURL = `https://eth-sepolia.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
 
 const alchemy_options = {
   method: "GET",
@@ -69,15 +69,15 @@ async function sendGraphQL(_query, _variables) {
 }
 
 // USE FOR MAINNET
-const wss = new WebSocket(
-  `wss://ws.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
-);
+// const wss = new WebSocket(
+//   `wss://ws.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
+// );
 
 // USE FOR TESTNET
 // console.log("WEBSOCKET API EKY: " + process.env.WEBSOCKET_API_KEY)
-// const wss = new WebSocket(
-//   `wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
-// );
+const wss = new WebSocket(
+  `wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
+);
 
 // Schedule updates every 5 minutes (adjust the interval as needed).
 // setInterval(schedulePeriodicUpdates, 5 * 60 * 1000);
@@ -192,7 +192,8 @@ wss.on("open", function open() {
                 transferVariables
               );
               console.log(
-                "TRANSFER RESPONSE: " + JSON.stringify(transferResponse)
+                "ASSET_MOVED_OUT -- TRANSFER RESPONSE: " +
+                  JSON.stringify(transferResponse)
               );
             } catch (error) {
               console.error(error);
@@ -742,6 +743,35 @@ wss.on("open", function open() {
             const response = await sendGraphQL(addNFTMutation, variables);
             console.log(
               "ASSET MOVED IN NEW RESPONSE: " + JSON.stringify(response)
+            );
+
+            const transferVariables = {
+              input: {
+                action: "ASSET_MOVED_IN",
+                to: {
+                  address: toContact.address,
+                  contact: toContact.contact._id,
+                  contactName: toContact.contact.name,
+                },
+                from: {
+                  address: from
+                },
+                collectionName: toContact.collectionName,
+                contractAddress: token.contract,
+                tokenId: Number(token.tokenId),
+              },
+            };
+
+            console.log(
+              "TRANSFER VARIABLES: " + JSON.stringify(transferVariables)
+            );
+
+            const transferResponse = await sendGraphQL(
+              addTransferMutation,
+              transferVariables
+            );
+            console.log(
+              "TRANSFER RESPONSE: " + JSON.stringify(transferResponse)
             );
           } catch (error) {
             console.error(error);
