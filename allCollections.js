@@ -43,7 +43,7 @@ const allCollections = [
     "0x72a94e6c51cb06453b84c049ce1e1312f7c05e2c", // wiiides
     "0xb7f7f6c52f2e2fdb1963eab30438024864c313f6", // wrapped cryptopunks =====================================> DONE (no traits)
     "0x000000000000003607fce1ac9e043a86675c5c2f", // cryptopunks721 (new wrapped contaract) ==================> DONE
-    "0x96246927030094c22782ec9921f082d024536982", // CREYNIUMS - testing purposes
+    "0x299e78808918f3f4fa4d1b97b0706fae70dfb83a", // BGAN Pillars - testing purposes
 ]
 
 export {allCollections}
