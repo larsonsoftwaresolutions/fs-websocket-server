@@ -137,14 +137,13 @@ wss.on("open", function open() {
         fromContactNft = fromContactNft.data.getNFTsByContact[0];
         if (!toContact) {
           // the to address does NOT belong to a contact in the black book
-          if (fromContactNft.ercType === "erc1155") {
+          if (fromContactNft.ercType === "ERC1155") {
             let _amount = Number(transferData.amount);
             _fromContactRemaining = fromContactNft.quantity - _amount;
           }
           if (
             _fromContactRemaining === 0 ||
-            fromContactNft.ercType === "erc721" ||
-            fromContactNft.ercType === "cryptopunks"
+            fromContactNft.ercType === "ERC721"
           ) {
             try {
               console.log("ASSET_MOVED_OUT");
@@ -382,14 +381,14 @@ wss.on("open", function open() {
                         : nft.name,
                     image: nft.image.cachedUrl,
                     tokenId: Number(nft.tokenId),
-                    ercType: nft.contract.tokenType,
-                    ownerAddress: address,
+                    ercType: nft.tokenType,
+                    ownerAddress: toContact.address,
                     contractAddress: nft.contract.address,
                     slug: nft.collection.slug,
                     collectionName: nft.collection.name,
-                    contact: contacts[contactIndex]._id,
-                    contactName: contacts[contactIndex].name,
-                    quantity: Number(nft.balance),
+                    contact: toContact.contact._id,
+                    contactName: toContact.contact.name,
+                    quantity: Number(transferData.amount),
                     traits: newAssetTraits,
                   },
                 };
@@ -712,12 +711,17 @@ wss.on("open", function open() {
 
             const variables = {
               input: {
-                name: nft.name,
-                image: nft.image_url,
-                tokenId: Number(token.tokenId),
-                ercType: nft.token_standard,
+                name:
+                  nft.name === "CryptoPunks"
+                    ? nft.name.split("s", 1) + " #" + nft.tokenId
+                    : nft.contract?.name === "Autoglyphs"
+                    ? nft.contract.name.split("s", 1) + " #" + nft.tokenId
+                    : nft.name,
+                image: nft.image.cachedUrl,
+                tokenId: Number(nft.tokenId),
+                ercType: nft.tokenType,
                 ownerAddress: toContact.address,
-                contractAddress: token.contract,
+                contractAddress: nft.contract.address,
                 slug: nft.collection.slug,
                 collectionName: nft.collection.name,
                 contact: toContact.contact._id,
@@ -766,7 +770,6 @@ wss.on("open", function open() {
     if (JSON.parse(_data).status === "ready") {
       console.log("Subscribing");
       await fetchAndUpdateAddresses();
-      // setInterval(fetchAndUpdateAddresses, 5 * 1 * 1000);
     }
   });
 });
