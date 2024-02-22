@@ -37,13 +37,14 @@ const allCollections = [
     "0x9126b817ccca682beaa9f4eae734948ee1166af1", // bgans V1 =================================================> DONE
     "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270", // artblocks
     "0x11de4a45d9dffe96b30cba3dde25f97f6db26c0b", // yellow flappy
-    "0xdcd8dbb5624e2a44f9b3882f56b62d2d1920f660", // some random sepolia collection
     "0xc3f733ca98e0dad0386979eb96fb1722a1a05e69", // mooncats
     "0x5ab44d97b0504ed90b8c5b8a325aa61376703c88", // e30d
     "0x72a94e6c51cb06453b84c049ce1e1312f7c05e2c", // wiiides
     "0xb7f7f6c52f2e2fdb1963eab30438024864c313f6", // wrapped cryptopunks =====================================> DONE (no traits)
     "0x000000000000003607fce1ac9e043a86675c5c2f", // cryptopunks721 (new wrapped contaract) ==================> DONE
     "0x299e78808918f3f4fa4d1b97b0706fae70dfb83a", // BGAN Pillars - testing purposes
+    "0xfc4a9d4cd18dea2acd38d8a4f292dfa5006ec838", // sepolia nonsense - TLBB
+    "0xdcd8dbb5624e2a44f9b3882f56b62d2d1920f660", // some random sepolia collection - SBK
 ]
 
 export {allCollections}
