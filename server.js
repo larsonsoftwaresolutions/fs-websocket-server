@@ -590,7 +590,13 @@ wss.on("open", function open() {
                         : nft.contract?.name === "Autoglyphs"
                         ? nft.contract.name.split("s", 1) + " #" + nft.tokenId
                         : nft.name,
-                    image: nft.image.cachedUrl,
+                    // image: nft.image.cachedUrl,
+                    image:
+                      nft.contract.symbol === "XLP"
+                        ? "https://i.seadn.io/s/raw/files/0fb7d3a228c6563fb1e6970d04f697e5.png?auto=format&dpr=1&w=1000"
+                        : nft.contract.symbol === "TLBB"
+                        ? "https://i.seadn.io/s/raw/files/7adfc046887cf65714723c519f23b75f.jpg?auto=format&dpr=1&w=1000"
+                        : "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg",
                     tokenId: Number(nft.tokenId),
                     ercType: nft.tokenType,
                     ownerAddress: toContact.address,
