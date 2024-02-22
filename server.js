@@ -27,11 +27,11 @@ const jsonParser = bodyParser.json();
 
 // USE FOR MAINNET
 const graphqlEndpoint = "https://fountaindigital.xyz/graphql";
-// const alchemyBaseURL = `https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
+const alchemyBaseURL = `https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
 
 // USE FOR TESTNET
 // const graphqlEndpoint = "http://localhost:3000/graphql";
-const alchemyBaseURL = `https://eth-sepolia.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
+// const alchemyBaseURL = `https://eth-sepolia.g.alchemy.com/nft/v3/${process.env.ALCHEMY_API_KEY}`;
 
 const alchemy_options = {
   method: "GET",
@@ -76,15 +76,15 @@ async function sendGraphQL(_query, _variables) {
 }
 
 // USE FOR MAINNET
-// const wss = new WebSocket(
-//   `wss://ws.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
-// );
+const wss = new WebSocket(
+  `wss://ws.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
+);
 
 // USE FOR TESTNET
 // console.log("WEBSOCKET API EKY: " + process.env.WEBSOCKET_API_KEY)
-const wss = new WebSocket(
-  `wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
-);
+// const wss = new WebSocket(
+//   `wss://ws-sepolia.reservoir.tools?api_key=${process.env.WEBSOCKET_API_KEY}`
+// );
 
 // Schedule updates every 5 minutes (adjust the interval as needed).
 // setInterval(schedulePeriodicUpdates, 5 * 60 * 1000);
@@ -400,10 +400,10 @@ wss.on("open", function open() {
                     ercType: nft.tokenType,
                     ownerAddress: toContact.address,
                     contractAddress: nft.contract.address.toLowerCase(),
-                    // slug: nft.collection.slug,
-                    slug: "test-collection",
-                    // collectionName: nft.collection.name,
-                    collectionName: "Test Collection",
+                    slug: nft.collection.slug,
+                    // slug: "test-collection",
+                    collectionName: nft.collection.name,
+                    // collectionName: "Test Collection",
                     contact: toContact.contact._id,
                     contactName: toContact.contact.name,
                     quantity: Number(transferData.amount),
@@ -602,10 +602,10 @@ wss.on("open", function open() {
                     ercType: nft.tokenType,
                     ownerAddress: toContact.address,
                     contractAddress: nft.contract.address.toLowerCase(),
-                    // slug: nft.collection.slug,
-                    slug: "test-collection",
-                    // collectionName: nft.collection.name,
-                    collectionName: "Test Collection",
+                    slug: nft.collection.slug,
+                    // slug: "test-collection",
+                    collectionName: nft.collection.name,
+                    // collectionName: "Test Collection",
                     contact: toContact.contact._id,
                     contactName: toContact.contact.name,
                     quantity: Number(transferData.amount),
@@ -747,10 +747,10 @@ wss.on("open", function open() {
                 ercType: nft.tokenType,
                 ownerAddress: toContact.address,
                 contractAddress: nft.contract.address.toLowerCase(),
-                // slug: nft.collection.slug,
-                slug: "test-collection",
-                // collectionName: nft.collection.name,
-                collectionName: "Test Collection",
+                slug: nft.collection.slug,
+                // slug: "test-collection",
+                collectionName: nft.collection.name,
+                // collectionName: "Test Collection",
                 contact: toContact.contact._id,
                 contactName: toContact.contact.name,
                 quantity: Number(transferData.amount),
@@ -774,8 +774,8 @@ wss.on("open", function open() {
                 from: {
                   address: from,
                 },
-                // collectionName: nft.collection.name,
-                collectionName: "Test Collection",
+                collectionName: nft.collection.name,
+                // collectionName: "Test Collection",
                 contractAddress: token.contract,
                 tokenId: Number(token.tokenId),
               },
