@@ -112,16 +112,16 @@ wss.on("open", function open() {
               contact: contact,
               address: address,
             };
-          } if (address === to) {
+          } else if (address === to) {
             toContact = {
               contact: contact,
               address: address,
             };
           }
-          console.log("FROM CONTACT: " + JSON.stringify(fromContact))
-          console.log("TO CONTACT: " + JSON.stringify(toContact))
         }
       }
+      console.log("FROM CONTACT: " + JSON.stringify(fromContact));
+      console.log("TO CONTACT: " + JSON.stringify(toContact));
       if (fromContact) {
         // the from address belongs to a contact in the black book
         let _fromContactRemaining = -1;
@@ -373,7 +373,6 @@ wss.on("open", function open() {
                     },
                   ];
                 }
-                Ï;
 
                 const variables = {
                   input: {
@@ -389,9 +388,9 @@ wss.on("open", function open() {
                     ownerAddress: toContact.address,
                     contractAddress: nft.contract.address.toLowerCase(),
                     // slug: nft.collection.slug,
-                    slug: 'test-collection',
+                    slug: "test-collection",
                     // collectionName: nft.collection.name,
-                    collectionName: 'Test Collection',
+                    collectionName: "Test Collection",
                     contact: toContact.contact._id,
                     contactName: toContact.contact.name,
                     quantity: Number(transferData.amount),
@@ -586,9 +585,9 @@ wss.on("open", function open() {
                     ownerAddress: toContact.address,
                     contractAddress: token.contract,
                     // slug: nft.collection.slug,
-                    slug: 'test-collection',
+                    slug: "test-collection",
                     // collectionName: nft.collection.name,
-                    collectionName: 'Test Collection',
+                    collectionName: "Test Collection",
                     contact: toContact.contact._id,
                     contactName: toContact.contact.name,
                     quantity: Number(transferData.amount),
@@ -726,17 +725,20 @@ wss.on("open", function open() {
                     ? nft.contract.name.split("s", 1) + " #" + nft.tokenId
                     : nft.name,
                 // image: nft.image.cachedUrl,
-                image: nft.contract.symbol === 'XLP' ? "https://i.seadn.io/s/raw/files/0fb7d3a228c6563fb1e6970d04f697e5.png?auto=format&dpr=1&w=1000" : 
-                      nft.contract.symbol === 'TLBB' ? "https://i.seadn.io/s/raw/files/7adfc046887cf65714723c519f23b75f.jpg?auto=format&dpr=1&w=1000" : 
-                      "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg",
+                image:
+                  nft.contract.symbol === "XLP"
+                    ? "https://i.seadn.io/s/raw/files/0fb7d3a228c6563fb1e6970d04f697e5.png?auto=format&dpr=1&w=1000"
+                    : nft.contract.symbol === "TLBB"
+                    ? "https://i.seadn.io/s/raw/files/7adfc046887cf65714723c519f23b75f.jpg?auto=format&dpr=1&w=1000"
+                    : "https://ichef.bbci.co.uk/news/976/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg",
                 tokenId: Number(nft.tokenId),
                 ercType: nft.tokenType,
                 ownerAddress: toContact.address,
                 contractAddress: nft.contract.address.toLowerCase(),
                 // slug: nft.collection.slug,
-                slug: 'test-collection',
+                slug: "test-collection",
                 // collectionName: nft.collection.name,
-                collectionName: 'Test Collection',
+                collectionName: "Test Collection",
                 contact: toContact.contact._id,
                 contactName: toContact.contact.name,
                 quantity: Number(transferData.amount),
