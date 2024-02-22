@@ -762,7 +762,8 @@ wss.on("open", function open() {
                 from: {
                   address: from,
                 },
-                collectionName: toContact.collectionName,
+                // collectionName: nft.collection.name,
+                collectionName: "Test Collection",
                 contractAddress: token.contract,
                 tokenId: Number(token.tokenId),
               },
