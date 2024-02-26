@@ -218,7 +218,7 @@ wss.on("open", function open() {
 
               telegramBot.sendMessage(
                 process.env.TELEGRAM_CHAT_ID,
-                JSON.stringify(tgMessage)
+                tgMessage
               );
             } catch (error) {
               console.error(error);
@@ -822,7 +822,7 @@ wss.on("open", function open() {
 
             telegramBot.sendMessage(
               process.env.TELEGRAM_CHAT_ID,
-              JSON.stringify(tgMessage)
+              tgMessage
             );
           } catch (error) {
             console.error(error);
