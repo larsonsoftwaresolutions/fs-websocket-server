@@ -213,7 +213,7 @@ wss.on("open", function open() {
 
               To: ${resp_data.to.address}
 
-              Asset: https://opensea.io/assets/ethereum/${resp_data.contractAddress}/${resp_data.token}
+              Asset: https://opensea.io/assets/ethereum/${resp_data.contractAddress}/${resp_data.tokenId}
               `;
 
               telegramBot.sendMessage(
@@ -809,15 +809,11 @@ wss.on("open", function open() {
 
             let resp_data = transferResponse.data.addTransfer;
 
-            let tgMessage = `
-            Action: ${resp_data.action}
-
+            let tgMessage = `Action: ${resp_data.action}
             To: ${resp_data.to.contactName}
             Address: ${resp_data.to.address}
-
             From: ${resp_data.from.address}
-
-            Asset: https://opensea.io/assets/ethereum/${resp_data.contractAddress}/${resp_data.token}
+            Asset: https://opensea.io/assets/ethereum/${resp_data.contractAddress}/${resp_data.tokenId}
             `;
 
             telegramBot.sendMessage(
