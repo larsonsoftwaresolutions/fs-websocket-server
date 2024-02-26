@@ -203,9 +203,22 @@ wss.on("open", function open() {
                   JSON.stringify(transferResponse)
               );
 
+              let resp_data = transferResponse.data.addTransfer;
+
+              let tgMessage = `
+              Action: ${resp_data.action}
+
+              From: ${resp_data.from.contactName}
+              Address: ${resp_data.from.address}
+
+              To: ${resp_data.to.address}
+
+              Asset: https://opensea.io/assets/ethereum/${resp_data.contractAddress}/${resp_data.token}
+              `;
+
               telegramBot.sendMessage(
                 process.env.TELEGRAM_CHAT_ID,
-                JSON.stringify(transferResponse)
+                JSON.stringify(tgMessage)
               );
             } catch (error) {
               console.error(error);
@@ -794,9 +807,22 @@ wss.on("open", function open() {
                 JSON.stringify(transferResponse)
             );
 
+            let resp_data = transferResponse.data.addTransfer;
+
+            let tgMessage = `
+            Action: ${resp_data.action}
+
+            To: ${resp_data.to.contactName}
+            Address: ${resp_data.to.address}
+
+            From: ${resp_data.from.address}
+
+            Asset: https://opensea.io/assets/ethereum/${resp_data.contractAddress}/${resp_data.token}
+            `;
+
             telegramBot.sendMessage(
               process.env.TELEGRAM_CHAT_ID,
-              JSON.stringify(transferResponse)
+              JSON.stringify(tgMessage)
             );
           } catch (error) {
             console.error(error);
