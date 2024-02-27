@@ -37,6 +37,7 @@ const allCollections = [
     '0xed5af388653567af2f388e6224dc7c4b3241c544', // Skulls of Luci - sam spratt
     '0x41a322b28d0ff354040e2cbc676f0320d8c8850d', // SuperRare - The Lost Robbies ============================> DONE
     '0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0', // SuperRare - Other stuff? ================================> DONE
+    '0x4e1f41613c9084fdb9e34e11fae9412427480e56', // Terraforms
     "0xaadc2d4261199ce24a4b0a57370c4fcf43bb60aa", // The Currency - Damien Hirst
     "0x6b00de202e3cd03c523ca05d8b47231dbdd9142b", // Tom Sachs: Rocket Factory - Rockets
     "0x11595ffb2d3612d810612e34bc1c2e6d6de55d26", // Tom Sachs: Rocket Factory - Components    
